@@ -1,0 +1,156 @@
+/* mobile and tablet */
+@media (max-width: 1023px) {
+    .hide-on-mob-tab {
+        display: none;
+    }
+
+    .on-mob-tab {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: calc(var(--header-height) - 10px);
+        left: 0;
+        z-index: 11;
+        height: auto;
+        background-color: rgba(0,0,0,.8);
+        display: none;
+        padding-bottom: 40px;
+        animation: SideIn linear 0.3s;
+    }
+
+    .menu-list-btn {
+        display: block;
+        font-size: 2rem;
+        color: var(--red-color);
+        margin: auto;
+        margin-bottom: 4px;
+        cursor: pointer;
+    }
+
+    .menu-checkbox:checked ~ .nav-list
+    {
+        display: flex;
+    }
+    
+    @keyframes SideIn {
+        from {
+            top: calc(var(--header-height) / 2 );
+            opacity: 0;
+        }
+
+        to {
+            top: calc(var(--header-height) - 12px );
+            opacity: 1;
+        }
+    }
+
+    .nav-link{
+        display: block;
+        width: 100%;
+        line-height: 40px;
+        margin-right: 0;
+        display: block;
+        border-bottom: 1px solid #ededed33;
+        border-radius: 0;
+    }
+
+    .submenu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .submenu-down {
+        width: 100%;
+        background-color: var(--primary-color);
+        position: relative;
+        top: 0;
+        left: 0;
+        display: none;
+        background-color: var(--white-color);
+    } 
+
+    .submenu-item,
+    .submenu-link {
+        width: 100%;
+    }
+
+    .submenu:hover .submenu-down {
+        display: none;
+    }
+
+    .submenu-checkbox:checked ~ .submenu-down
+    {
+        display: flex;
+    }
+
+    .submenu::before {
+        display: none;
+    }
+
+    .overlay {
+        background: url(https://preview.colorlib.com/theme/favison/img/banner/xhome-banner.jpg.pagespeed.ic.Q3BCd7TdYZ.webp) no-repeat scroll center center;
+    }
+
+    .banner-content {
+        background: rgba(0,0,0,.5);
+        padding: 20px;
+    }
+
+    .contact-icon {
+        margin: 10px 0;
+    }
+}
+
+/* tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+    .hide-on-tablet {
+        display: none;
+    }       
+}   
+
+/* mobile */
+@media (max-width: 739px) {
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .on-mobile {
+        padding: 10px 10px;
+    }
+
+    .title-white,
+    .title-black {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+
+    .margin-on-moblie {
+        margin: 0;
+    }
+
+    .brands-img {
+        padding: 0 10px;
+    }
+
+    .footer-area {
+        padding-top: 30px;
+    }
+
+    .footer-bottom__text,
+    .footer-bottom__text i,
+    .footer-bottom__link {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hide-on-pc {
+        display: none;
+    }
+}

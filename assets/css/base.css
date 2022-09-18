@@ -1,0 +1,109 @@
+:root {
+    --title-color: #1d1d1d;
+    --red-color: #f84b67;
+    --shadow-color: #cfcbcb;
+    --border-color: #edf1f6;
+    --white-color: #fff;
+    --black-color: #000;
+    --footer-color: #7b838a;
+    --extra-content-color: #7f7f7f;
+    
+    --header-height: 80px;
+}
+
+*{
+    box-sizing: inherit;    
+}
+
+html{
+    /* 16px */
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.space {
+    padding: 60px 0;
+}
+
+.min-space {
+    padding: 10px 0;
+}
+
+.title-white,
+.title-black {
+    margin: 0 0 30px 0;
+    line-height: 5.4rem;
+    font-size: 5rem;
+    font-weight: 600;
+    color: var(--white-color);
+}
+
+.sub-title-white,
+.sub-title-black {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 2.7rem;
+    margin-bottom: 25px;
+}
+
+.title-black,
+.sub-title-black {
+    color: var(--black-color);
+}
+
+.single-column {
+    border: 1px solid var(--border-color);
+    background: #fff;
+    text-align: left;
+    padding: 40px 30px 45px;
+    background-image: url(https://preview.colorlib.com/theme/favison/img/elements/xsingle_bg.png.pagespeed.ic.gN5H1lsEc_.webp);
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+.column__content-title,
+.content-title{
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin: 0 0 18px 0;
+}
+
+.column__content-sub,
+.content-sub {
+    font-weight: 400;
+    color: var(--extra-content-color);
+    line-height: 2.7rem;
+    font-size: 1.3rem;
+    margin: 0 0 35px 0;
+}
+
+.column__content-link {
+    font-size: 1.4rem;
+    color: var(--title-color);
+    position: relative;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+}
+
+.column__content-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 80px;
+    background: #edf1f6;
+}
+
+.column__content-link:hover:after{
+    background: var(--red-color);
+}
+
+
+
+
