@@ -1,25 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="./assets/css/main.css">
-</head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="./assets/fontawesome-free-6.0.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
 <body>
-  <div id="toast"></div>
+  <div class="head grid wide">
+    <!-- <input id="write" name="write" type="text" placeholder="write st" class="inputncc">
+    <button src=" bind_method.js" class="submit1">Add1</button> -->
+    <button src=" bind_method.js" class="submit">Add</button>
+  </div>
+  <div class="content grid wide">
+    <div class="name">Ok r đó</div>
+    <div class="img-box">
+      <img src="./assets/img/moe` ami ok.jpg" alt="" class="img">
+    </div>
+    <div class="funtion-bar">
+      <i class="view ti-eye"></i>
+      <i class="heart ti-heart"></i>
+      <i class="share fa-solid fa-share"></i>
+    </div> 
+    <div class="img-box">
+      <img src="./assets/img/moe` ami ok.jpg" alt="" class="img">
+    </div>
+    <div class="funtion-bar">
+      <i class="view ti-eye"></i>
+      <i class="heart ti-heart"></i>
+      <i class="share fa-solid fa-share"></i>
+    </div>
+    <div class="modal">
+      <div class="modal-overlay">
+          <div class="modal-body">
+            <div class="modal-close">
+              <i class="icon-close ti-close"></i>
+            </div>
+            <div class="modal-inner">
+              <form action="" method="POST" class="form" id="form-1">
+                <h3 class="heading">Rhust❤️</h3>
+                <p class="desc">ONE LOVE ONE FUTURE</p>
+            
+                <div class="spacer"></div>
+            
+                <div class="form-group">
+                  <label for="fullname" class="form-label">Tên</label>
+                  <input id="fullname" name="fullname" rules="required" type="text" placeholder="VD: Sơn Hải" class="form-control input-full-name">
+                  <span class="form-message"></span>
+                </div>
+            
+                <!-- <div class="form-group">
+                  <label for="email" class="form-label">Email</label>
+                  <input id="email" name="email" rules="required|email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                  <span class="form-message"></span>
+                </div> -->
 
-<div>
-  <div onclick="showSuccessToast();" class="btn btn--success">Show success toast</div>
-  <div onclick="showErrorToast();" class="btn btn--danger">Show error toast</div>
-</div>
+                <div class="form-group">
+                  <label for="place" class="form-label">Địa điểm chụp</label>
+                  <input id="place" name="place" rules="required" type="text" placeholder="VD: Cổng parabol" class="form-control input-place">
+                  <span class="form-message"></span>
+                </div>
 
-<script src="./index.js">
-   
-</script>
+                <div class="form-group">
+                  <label for="time" class="form-label">Thời gian</label>
+                  <input id="time" name="time" rules="required" type="text" placeholder="VD: 12h" class="form-control input-time">
+                  <span class="form-message"></span>
+                </div>
 
+                <div class="form-group">
+                  <label for="form-img" class="form-label">Ảnh</label>
+                  <input id="form-img" name="form-img" rules="required" type="file" class="form-control input-file">
+                  <span class="form-message"></span>
+                </div>
+            
+                <button class="form-submit">Ok r đó</button>
+              </form>
+            
+            </div>
+            </div>
+          </div>
+    </div>
+  </div>
+    <script src="./js/index.js"></script>
+    <script src="./js/validator1.js"></script>
+    <script>
+        Validator({
+          form: '#form-1',
+          errSelector: '.form-message',
+          rules: [
+            Validator.isRequired('#fullname'),
+            // Validator.isEmail('#email'),
+            Validator.isRequired('#place'),
+            Validator.isRequired('#fullname'),
+            Validator.isRequired('#form-img'),
+          ],
+          onSubmit : (data)=> {
+            console.log(data);
+          }
+        });
+    </script>
 </body>
-
 </html>
