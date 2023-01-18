@@ -15,18 +15,210 @@ body {
   background-color: var(--main-color);
 }
 
+/* head */
+
 .head {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  background-color: red;
+  height: var(--header-height);
 }
 
+.navbar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.logo-img {
+  width: 34px;
+  height: 34px;
+}
+
+.add-btn{
+  outline: none;
+  color: #fff;
+  font-weight: 600;
+  background-color: red;
+  padding: 12px 16px;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.most-viewed {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.viewed-list{
+  display: none;
+  position: absolute;
+  top: 70%;
+  left: 10px;
+  color: black;
+  width: 400px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: default;
+  background-color: var(--white-color);
+  list-style: none;
+  padding: 10px;
+  animation: fadeIn ease-in 0.2s;
+  cursor: default;
+  z-index: 1;
+}
+
+
+.viewed-list::before {
+  content: "";
+  border-width: 20px 27px;
+  border-style: solid;
+  border-color: transparent transparent var(--white-color) transparent;
+  position: absolute;
+  left: 6px;
+  top: -30px;
+}
+
+.most-viewed:hover .viewed-list{
+  display: flex;
+  flex-direction: column;
+}
+.viewed-item{
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+.viewed-item-in4{
+  padding: 10px 0;
+}
+.most-shared {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.shared-list{
+  display: none;
+  position: absolute;
+  top: 70%;
+  left: 10px;
+  color: black;
+  width: 400px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: default;
+  background-color: var(--white-color);
+  list-style: none;
+  padding: 10px;
+  animation: fadeIn ease-in 0.2s;
+  cursor: default;
+  z-index: 1;
+}
+
+.shared-list::before {
+  content: "";
+  border-width: 20px 27px;
+  border-style: solid;
+  border-color: transparent transparent var(--white-color) transparent;
+  position: absolute;
+  left: 6px;
+  top: -30px;
+}
+
+.most-shared:hover .shared-list{
+  display: flex;
+  flex-direction: column;
+}
+.shared-item{
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+.shared-item-in4{
+  padding: 10px 0;
+}
+
+.instant-of-year {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.year-list{
+  display: none;
+  position: absolute;
+  top: 70%;
+  right: 10px;
+  color: black;
+  width: 400px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: default;
+  background-color: var(--white-color);
+  list-style: none;
+  padding: 10px;
+  transform-origin: calc(100% - 32px) top;
+  animation: yearGrowth ease-in 0.5;
+  will-change: opacity, transform;
+  display: none;
+  z-index: 1;
+}
+@keyframes yearGrowth{
+  from{
+      opacity: 0;
+      transform: scale(0);
+  }
+  to{
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+
+.year-list::before {
+  content: "";
+  border-width: 20px 27px;
+  border-style: solid;
+  border-color: transparent transparent var(--white-color) transparent;
+  position: absolute;
+  right: 6px;
+  top: -30px;
+}
+
+.instant-of-year:hover .year-list{
+  display: flex;
+  flex-direction: column;
+}
+.year-item{
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+.year-item-in4{
+  padding: 10px 0;
+}
+
+/* content */
 .content {
   color: black;
   font-size: 1.2rem;
 }
-
-.content{
+.wrt-st-in-here {
+  margin-top: 20px;
 
 }
 .img-box {
@@ -59,6 +251,7 @@ body {
   bottom: 0;
   right: 0;
   display: none;
+  animation: growth ease-in 0.2s;
 }
 
 .modal-overlay{
