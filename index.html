@@ -62,9 +62,9 @@
     </div>
   </div>
   <div class="content grid wide">
-    <div class="wrt-st-in-here">Ok r đó</div>
+    <ul class="wrt-st-in-here"></ul>    
     <div class="img-box">
-      <img src="./assets/img/moe` ami ok.jpg" alt="" class="img">
+      <img src="./assets/img/moe` ami ok.jpg" alt="" class="content-img">
     </div>
     <div class="funtion-bar">
       <i class="view ti-eye"></i>
@@ -72,7 +72,7 @@
       <i class="share fa-solid fa-share"></i>
     </div> 
     <div class="img-box">
-      <img src="./assets/img/wibu-img.jpg" alt="" class="img">
+      <img src="./assets/img/wibu-img.jpg" alt="" class="content-img">
     </div>
     <div class="funtion-bar">
       <i class="view ti-eye"></i>
@@ -112,15 +112,15 @@
 
                 <div class="form-group">
                   <label for="time" class="form-label">Thời gian</label>
-                  <input id="time" name="time" rules="required" type="text" placeholder="VD: 12:00pm,12/12/2022" class="form-control input-time">
+                  <input id="time" name="time" rules="required" type="text" placeholder="2022" class="form-control input-time">
                   <span class="form-message"></span>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="form-img" class="form-label">Ảnh</label>
                   <input id="form-img" name="form-img" rules="required" type="file" class="form-control input-file">
                   <span class="form-message"></span>
-                </div>
+                </div> -->
             
                 <button class="form-submit">Ok r đó</button>
               </form>
@@ -140,13 +140,14 @@
             Validator.isRequired('#fullname'),
             // Validator.isEmail('#email'),
             Validator.isRequired('#place'),
-            Validator.isRequired('#fullname'),
-            Validator.isRequired('#form-img'),
+            Validator.isRequired('#time'),
+            // Validator.isRequired('#form-img'),
           ],
           onSubmit : (data)=> {
-            console.log(data);
+            return data
           }
         });
+        
     </script>
 </body>
 </html>

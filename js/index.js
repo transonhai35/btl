@@ -1,13 +1,20 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+let arrLinkedlist = [];
+let modal = $('.modal');
+let inputFullName = $('.input-full-name');
+let inputPlace = $('.input-place');
+let inputTime = $('.input-time');
+let inputFile = $('.input-file');
+
 // cài đặt node,ll và các chức năng
-{
 class ImageViewer {
-    constructor(name, place, time ) {
+    constructor(name, place, time) {
       this.name = name;
       this.place = place;
       this.time = time;
+      this.view = 0;
     }
   }
 class LinkNode {
@@ -121,15 +128,6 @@ class LinkedList {
       currNode = currNode.next;
     }
 
-    printList(){
-      var curr = this.head;
-      var str = [];
-      while (curr) {
-        str.push(curr.data);
-        curr = curr.next;
-      }
-      console.log(str);
-    }
     //hiển thị node có index mà mình nhập
     printListNode(index){
       let currNode, prevNode, i = 0;
@@ -164,55 +162,34 @@ class LinkedList {
         }
       }
     }
-  }
-  let llImg = new LinkedList(new LinkNode(new ImageViewer()));
-  let val = new ImageViewer(1,2,3);
-  let val1 = new ImageViewer(2,4,3);
-  let val2 = new ImageViewer(6,4,8);
-  llImg.insert(val);
-  llImg.insert(val1);
-  llImg.insert(val2);
-  llImg.printListNode(1);
-  // llImg.deleteData(val1);
-  llImg.printList();
-
-}
- 
-//thao thêm một element
-{
-    let add = (() => {
-    let submit = $('.navbar-add');
-    let modalClose = $('.modal-close');    
-    
-    let imgs = [];
-    return {
-        insert(img){
-          imgs.push(img);
-        },
-        delete(index){
-          imgs.splice(index, 1);
-        },
-        render(){
-          
-        },
-        init () {
-            submit.onclick = () => {
-                modal.classList.add('active');
-            }
-            modalClose.onclick = () => {
-              modal.classList.remove('active');
-            }
-        }
+    findElement(value){
+      let currNode = this.head;
+      let placeArr = [];
+      for(let i = 0; i< this.size; i++){
+          if(value == currNode.data.place){
+            placeArr.push(currNode.data);
+            currNode = currNode.next;
+          }else{
+            currNode = currNode.next;
+          }
+      }
+      console.log(placeArr);
     }
-  })();
+    traverse(){
+      var currNode = this.head;
+      var arr = [];
+      while (currNode) {
+        arr.push(currNode.data);
+        currNode = currNode.next;
+      }
+      return arr;
+    }
+  }
 
-  add.init();
-}
-  let modal = $('.modal');
-  let inputFullName = $('.input-full-name');
-  let inputPlace = $('.input-place');
-  let inputTime = $('.input-time');
-  let inputFile = $('.input-file');
+
+let llImg = new LinkedList(new LinkNode(new ImageViewer()));
+let val1 = new ImageViewer('hai','c2','2022');
+llImg.insert(val1);
 
 //doi tuong validator
 function Validator(options) {
@@ -247,7 +224,6 @@ function Validator(options) {
   let formElement = document.querySelector(options.form);
   
   if (formElement) {
-
       formElement.onsubmit = (e)=> {
           e.preventDefault();
           
@@ -263,29 +239,23 @@ function Validator(options) {
           });
           
           if(isFormValid){
-            let enableInputs = formElement.querySelectorAll('[name]');
-            let formValues = Array.from(enableInputs).reduce((values, input)=>{
-              switch(input.type){
-                case 'file':
-                  values[input.name] = input.files;
-                  break;
-                default:
-                  values[input.name] = input.value;
-              }
-              
-              return values;
-            },{});
-            let val = new ImageViewer (formValues.fullname,formValues.place,formValues.time);
-              llImg.insert(val);
-              console.log(formValues);
-              modal.classList.remove('active');
-              inputFullName.value = '';
-              inputPlace.value = '';
-              inputTime.value = '';
-              // inputFile.value = '';
-              // options.onSubmit(formValues);   
-          }
+            if(typeof options.onSubmit === 'function'){
 
+              let enableInputs = formElement.querySelectorAll('[name]');
+              let formValues = Array.from(enableInputs).reduce((values, input)=>{
+                switch(input.type){
+                  case 'file':
+                    values[input.name] = input.files;
+                    break;
+                    default:
+                      values[input.name] = input.value;
+                    }
+                    
+                    return values;
+                  },{});
+                  options.onSubmit(formValues);
+                }
+              }
       }
 
       //lặp qua mỗi rule và xử lý (lắng nghe sự kiện)
@@ -314,6 +284,7 @@ function Validator(options) {
           }    
       }); 
   }
+  
 }
 
 // định nghĩa
@@ -338,4 +309,75 @@ Validator.isRequired = (selector)=> {
 //       }
 //   };
 // }
+
+
+//thêm một element
+
+
+let add = (() => {
+  let writeSt = $('.wrt-st-in-here');
+  let submit = $('.navbar-add');
+  let modalClose = $('.modal-close');
+  let formSubmit = $('.form-submit'); 
+  let formElement = $('#form-1')   
+    return {
+
+
+        render(){
+          let imageHtml = arrLinkedlist.map((arrImg,index) => `
+          <li>
+          <p class = "img-name">${arrImg.name}</p>
+          <span class="img-count" data-index="${index}">${arrImg.view}</span>
+          </li>            
+          `)
+          .join('')
+          
+
+          writeSt.innerHTML = imageHtml;
+        },
+        init () {
+            submit.onclick = () => {
+                modal.classList.add('active');
+                inputFullName.value = '';
+                inputPlace.value = '';
+                inputTime.value = '';
+            }
+            modalClose.onclick = () => {
+              modal.classList.remove('active');
+            }
+            if(formElement){
+              formElement.querySelector('.form-submit').onclick = ()=> {
+                let enableInputs = formElement.querySelectorAll('[name]');
+                let formValues = Array.from(enableInputs).reduce((values, input)=>{
+                  switch(input.type){
+                    case 'file':
+                      values[input.name] = input.files;
+                      break;
+                      default:
+                        values[input.name] = input.value;
+                  }
+                    
+                    return values;
+                },{});
+                let val = new ImageViewer(formValues.fullname,formValues.place,formValues.time);
+                llImg.insert(val);
+                arrLinkedlist = llImg.traverse();
+                modal.classList.remove('active');
+                writeSt.onclick =  (e)=>{
+                  let viewBtn = e.target.closest('.img-count');
+                    if(viewBtn){
+                      let index = viewBtn.dataset.index;
+                      console.log(arrLinkedlist[index].view++);
+                    }
+                    this.render();
+                } 
+                this.render(); 
+              }
+              
+            }
+        }
+    }
+  })();
+
+add.init();
 

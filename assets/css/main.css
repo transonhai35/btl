@@ -95,14 +95,17 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .viewed-item{
   display: flex;
   flex-direction: column;
   font-weight: 500;
 }
+
 .viewed-item-in4{
   padding: 10px 0;
 }
+
 .most-shared {
   display: flex;
   position: relative;
@@ -142,11 +145,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .shared-item{
   display: flex;
   flex-direction: column;
   font-weight: 500;
 }
+
 .shared-item-in4{
   padding: 10px 0;
 }
@@ -203,11 +208,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .year-item{
   display: flex;
   flex-direction: column;
   font-weight: 500;
 }
+
 .year-item-in4{
   padding: 10px 0;
 }
@@ -217,10 +224,20 @@ body {
   color: black;
   font-size: 1.2rem;
 }
+
 .wrt-st-in-here {
   margin-top: 20px;
-
+  list-style: none;
 }
+
+.img-name{
+  font-size: 2rem;
+}
+
+.img-count{
+  padding: 15px;
+}
+
 .img-box {
   display: flex;
   justify-content: center;
@@ -251,7 +268,6 @@ body {
   bottom: 0;
   right: 0;
   display: none;
-  animation: growth ease-in 0.2s;
 }
 
 .modal-overlay{
