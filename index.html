@@ -17,68 +17,128 @@
   <div class="head">
     <div class="grid wide">
       <div class="navbar">
+        <div class="tool-bars hide-on-pc" onclick="clickTool()">
+          <div class="tool-bars-icon on-mob-tab">
+            <i class="fa-solid fa-bars fade bars-icon on-mob-tab"></i>
+            <i class="fa-solid fa-angles-down fade down-icon"></i>
+          </div>
+          <div class="navbar-tool hide-on-pc fade">
+            <div class="navbar-add" onclick="submitOnClick()">
+              <button class="add-btn">Add</button>
+            </div>
+            <div class="most-viewed">
+              Most viewed
+              <ul class="viewed-list">
+                <li class="viewed-item">
+                  <span class="viewed-item-in4">Name: moe`</span>
+                  <span class="viewed-item-in4">Place: dell biet</span>
+                  <span class="viewed-item-in4">Time: 12:00pm,1/1/2023</span>
+                  <img src="./assets/img/moe` ami ok.jpg" class="viewed-img" alt="">
+                </li>
+  
+              </ul>
+            </div>
+            <div class="most-shared">
+              Most shared
+              <ul class="shared-list">
+                <li class="shared-item">
+                  <span class="shared-item-in4">Name: moe`</span>
+                  <span class="shared-item-in4">Place: dell biet</span>
+                  <span class="shared-item-in4">Time: 12:00pm,1/1/2023</span>
+                  <img src="./assets/img/moe` ami ok.jpg" class="share-img" alt="">
+                </li>
+              </ul>
+            </div>
+            <div class="instant-of-year">
+              Instant of year
+              <ul class="year-list">
+                <li class="year-item">
+                  <span class="year-item-in4">Name: moe`</span>
+                  <span class="year-item-in4">Place: dell biet</span>
+                  <span class="year-item-in4">Time: 12:00pm,1/1/2023</span>
+                  <img src="./assets/img/moe` ami ok.jpg" class="year-img" alt="">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="navbar-logo">
           <img src="./assets/img/j4f-logo.jpg" class="logo-img" alt="">
         </div>
-        <div class="navbar-add">
-          <button class="add-btn">Add</button>
-        </div>
-        <div class="most-viewed">
-          Most viewed
-          <ul class="viewed-list">
-            <li class="viewed-item">
-              <span class="viewed-item-in4">Name: moe`</span>
-              <span class="viewed-item-in4">Place: dell biet</span>
-              <span class="viewed-item-in4">Time: 12:00pm,1/1/2023</span>
-              <img src="./assets/img/moe` ami ok.jpg" class="viewed-img" alt="">
-            </li>
+        <div class="navbar-space on-tab"></div>
+        <div class="navbar-tool hide-on-mob-tab">
+          <div class="navbar-add hide-on-mob-tab" onclick="submitOnClick()">
+            <button class="add-btn">Add</button>
+          </div>
+          <div class="most-viewed  hide-on-mob-tab">
+            Most viewed
+            <ul class="viewed-list">
+              <li class="viewed-item">
+                <span class="viewed-item-in4">Name: moe`</span>
+                <span class="viewed-item-in4">Place: dell biet</span>
+                <span class="viewed-item-in4">Time: 12:00pm,1/1/2023</span>
+                <img src="./assets/img/moe` ami ok.jpg" class="viewed-img" alt="">
+              </li>
 
-          </ul>
+            </ul>
+          </div>
+          <div class="most-shared hide-on-mob-tab">
+            Most shared
+            <ul class="shared-list">
+              <li class="shared-item">
+                <span class="shared-item-in4">Name: moe`</span>
+                <span class="shared-item-in4">Place: dell biet</span>
+                <span class="shared-item-in4">Time: 12:00pm,1/1/2023</span>
+                <img src="./assets/img/moe` ami ok.jpg" class="share-img" alt="">
+              </li>
+            </ul>
+          </div>
+          <div class="instant-of-year hide-on-mob-tab">
+            Instant of year
+            <ul class="year-list">
+              <li class="year-item">
+                <span class="year-item-in4">Name: moe`</span>
+                <span class="year-item-in4">Place: dell biet</span>
+                <span class="year-item-in4">Time: 12:00pm,1/1/2023</span>
+                <img src="./assets/img/moe` ami ok.jpg" class="year-img" alt="">
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="most-shared">
-          Most shared
-          <ul class="shared-list">
-            <li class="shared-item">
-              <span class="shared-item-in4">Name: moe`</span>
-              <span class="shared-item-in4">Place: dell biet</span>
-              <span class="shared-item-in4">Time: 12:00pm,1/1/2023</span>
-              <img src="./assets/img/moe` ami ok.jpg" class="share-img" alt="">
-            </li>
-          </ul>
-        </div>
-        <div class="instant-of-year">
-          Instant of year
-          <ul class="year-list">
-            <li class="year-item">
-              <span class="year-item-in4">Name: moe`</span>
-              <span class="year-item-in4">Place: dell biet</span>
-              <span class="year-item-in4">Time: 12:00pm,1/1/2023</span>
-              <img src="./assets/img/moe` ami ok.jpg" class="year-img" alt="">
-            </li>
-          </ul>
-        </div>
-    </div> 
-
+      </div> 
     </div>
   </div>
-  <div class="content grid wide">
+  <div class="content ">
+    <div class="grid wide">
     <ul class="wrt-st-in-here"></ul>    
-    <div class="img-box">
-      <img src="./assets/img/moe` ami ok.jpg" alt="" class="content-img">
+    <div class="post">
+      <div class="post-header">
+        <img src="./assets/img/anh-dai-dien-dep.jpg" alt="" class="avatar">
+        <div class="post-in4">
+          <div class="person-name">hai</div>
+          <div class="post-place ">
+            <i class="fa-solid fa-location-dot place-icon"></i>
+            C1 Bach Khoa Ha Noi
+            <span class="post-time">
+              <i class="fa-solid fa-calendar-days time-icon"></i>
+              2023
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="post-body">
+        <div class="contain-img">
+          <img src="./assets/img/moe` ami ok.jpg" alt="" class="post-img fade">
+          <img src="./assets/img/wibu-img.jpg" alt="" class="post-img fade active">
+        </div>
+        <div class="funtion-bar">
+          <i class="bar-view ti-eye"></i>
+          <i class="bar-heart ti-heart" onclick="clickHeart()"></i>
+          <i class="bar-share fa-solid fa-share"></i>
+        </div>
+      </div> 
     </div>
-    <div class="funtion-bar">
-      <i class="view ti-eye"></i>
-      <i class="heart ti-heart"></i>
-      <i class="share fa-solid fa-share"></i>
-    </div> 
-    <div class="img-box">
-      <img src="./assets/img/wibu-img.jpg" alt="" class="content-img">
-    </div>
-    <div class="funtion-bar">
-      <i class="view ti-eye"></i>
-      <i class="heart ti-heart"></i>
-      <i class="share fa-solid fa-share"></i>
-    </div>
+
     <div class="modal">
       <div class="modal-overlay">
           <div class="modal-body">
@@ -130,8 +190,9 @@
           </div>
     </div>
   </div>
+  </div>
     <script src="./js/index.js"></script>
-    <script src="./js/validator1.js"></script>
+    <script src="./js/st.js"></script>
     <script>
         Validator({
           form: '#form-1',

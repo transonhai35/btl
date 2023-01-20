@@ -316,7 +316,8 @@ Validator.isRequired = (selector)=> {
 
 let add = (() => {
   let writeSt = $('.wrt-st-in-here');
-  let submit = $('.navbar-add');
+  let submit = $('.add-btn');
+  let submiOnMobTab = $('.add-btn-on-mob-tab');
   let modalClose = $('.modal-close');
   let formSubmit = $('.form-submit'); 
   let formElement = $('#form-1')   
@@ -336,15 +337,11 @@ let add = (() => {
           writeSt.innerHTML = imageHtml;
         },
         init () {
-            submit.onclick = () => {
-                modal.classList.add('active');
-                inputFullName.value = '';
-                inputPlace.value = '';
-                inputTime.value = '';
-            }
             modalClose.onclick = () => {
               modal.classList.remove('active');
             }
+
+            // xử lí khi bấm nút submit
             if(formElement){
               formElement.querySelector('.form-submit').onclick = ()=> {
                 let enableInputs = formElement.querySelectorAll('[name]');

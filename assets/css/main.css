@@ -18,15 +18,19 @@ body {
 /* head */
 
 .head {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
   background-color: red;
   height: var(--header-height);
+  top: 0;
 }
 
-.navbar {
+.navbar,
+.navbar-tool {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -35,12 +39,16 @@ body {
   padding: 0 5px;
   color: #fff;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .logo-img {
   width: 34px;
   height: 34px;
+}
+
+.navbar-tool{
+  margin-left: 60 px;
 }
 
 .add-btn{
@@ -223,11 +231,49 @@ body {
 .content {
   color: black;
   font-size: 1.2rem;
+  margin-top: var(--header-height);
+  padding-top: 1px;
 }
 
 .wrt-st-in-here {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   list-style: none;
+}
+
+.post-header{
+  display: flex;
+  padding-top: 5px;
+}
+
+.avatar{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.post-in4{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.person-name{
+  font-size: 1.5rem;
+}
+
+.place-icon,
+.time-icon{
+  padding: 5px;
+}
+
+.post-place{
+  font-size: 1rem;
+}
+
+.post-time{
+  padding: 10px;
 }
 
 .img-name{
@@ -238,10 +284,23 @@ body {
   padding: 15px;
 }
 
-.img-box {
+.post-body {
   display: flex;
   justify-content: center;
   padding: 10px 0;
+  width: 100%;
+  flex-direction: column;
+}
+
+.contain-img {
+  height: 500px;
+  margin: auto;
+}
+.post-img {
+  cursor: pointer;
+  display: none;
+  height: 100%; 
+  justify-content: center;
 }
 
 .funtion-bar {
@@ -251,12 +310,12 @@ body {
   padding: 10px;
 }
 
-.heart:hover {
+.bar-heart:hover {
   cursor: pointer;
   color: var(--red-color);
 }
 
-.share:hover {
+.bar-share:hover {
   cursor: pointer;
   color: blue;
 }
@@ -281,6 +340,9 @@ body {
   width: 35%;
   height: 100%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-close{
@@ -300,8 +362,6 @@ body {
 }
 
 .modal-inner{
-  position: absolute;
-  top: -20px;
 }
 
 .form {
