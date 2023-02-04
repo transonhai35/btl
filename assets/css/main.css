@@ -86,28 +86,23 @@ body {
   animation: fadeIn ease-in 0.2s;
   cursor: default;
   z-index: 1;
+  overflow: auto;
 }
 
-
-.viewed-list::before {
-  content: "";
-  border-width: 20px 27px;
-  border-style: solid;
-  border-color: transparent transparent var(--white-color) transparent;
-  position: absolute;
-  left: 6px;
-  top: -30px;
-}
-
-.most-viewed:hover .viewed-list{
-  display: flex;
-  flex-direction: column;
-}
 
 .viewed-item{
   display: flex;
   flex-direction: column;
   font-weight: 500;
+  overflow: auto;
+}
+
+.viewed-item-view0{
+  display: none;
+}
+
+.img-0view {
+  
 }
 
 .viewed-item-in4{
@@ -119,49 +114,6 @@ body {
   position: relative;
   cursor: pointer;
   padding: 10px;
-}
-
-.shared-list{
-  display: none;
-  position: absolute;
-  top: 70%;
-  left: 10px;
-  color: black;
-  width: 400px;
-  border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  cursor: default;
-  background-color: var(--white-color);
-  list-style: none;
-  padding: 10px;
-  animation: fadeIn ease-in 0.2s;
-  cursor: default;
-  z-index: 1;
-}
-
-.shared-list::before {
-  content: "";
-  border-width: 20px 27px;
-  border-style: solid;
-  border-color: transparent transparent var(--white-color) transparent;
-  position: absolute;
-  left: 6px;
-  top: -30px;
-}
-
-.most-shared:hover .shared-list{
-  display: flex;
-  flex-direction: column;
-}
-
-.shared-item{
-  display: flex;
-  flex-direction: column;
-  font-weight: 500;
-}
-
-.shared-item-in4{
-  padding: 10px 0;
 }
 
 .instant-of-year {
@@ -201,22 +153,6 @@ body {
   }
 }
 
-
-.year-list::before {
-  content: "";
-  border-width: 20px 27px;
-  border-style: solid;
-  border-color: transparent transparent var(--white-color) transparent;
-  position: absolute;
-  right: 6px;
-  top: -30px;
-}
-
-.instant-of-year:hover .year-list{
-  display: flex;
-  flex-direction: column;
-}
-
 .year-item{
   display: flex;
   flex-direction: column;
@@ -235,15 +171,45 @@ body {
   padding-top: 1px;
 }
 
+.content-start {
+  height: 500px;
+}
+
+.img-start {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
 .wrt-st-in-here {
   /* margin-top: 20px; */
   list-style: none;
 }
 
+.post {
+  overflow: auto;
+}
+
 .post-header{
   display: flex;
   padding-top: 5px;
+  overflow: auto;
+  justify-content: space-between;
 }
+
+.st-in-post-header{
+  display: flex;
+}
+
+.delete-icon {
+  font-size: 2.5rem;
+}
+
+.delete-icon:hover {
+  cursor: pointer;
+  color: red;
+}
+
 
 .avatar{
   width: 50px;
@@ -290,17 +256,18 @@ body {
   padding: 10px 0;
   width: 100%;
   flex-direction: column;
+  overflow: auto;
 }
 
 .contain-img {
-  height: 500px;
+  height: 400px;
   margin: auto;
 }
 .post-img {
   cursor: pointer;
-  display: none;
   height: 100%; 
   justify-content: center;
+  width: 100%;
 }
 
 .funtion-bar {
@@ -308,6 +275,18 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  align-items: center;
+}
+
+.bar-view{
+  padding: 10px;
+  display: flex;
+
+}
+
+.view-text {
+  margin-left: 5px;
+  display: flex;
 }
 
 .bar-heart:hover {
@@ -318,6 +297,11 @@ body {
 .bar-share:hover {
   cursor: pointer;
   color: blue;
+}
+
+
+.fn-linked-list{
+  padding: 10px 0;
 }
 
 .modal {

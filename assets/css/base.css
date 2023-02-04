@@ -50,6 +50,9 @@ html{
     animation-name: fade;
     animation-duration: 0.5s;
   }
+ .fadeIn {
+    animation-name: growth linear 0.3s;
+ } 
    
 @-webkit-keyframes fade {
     from {opacity: .4} 

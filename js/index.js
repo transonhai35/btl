@@ -10,10 +10,11 @@ let inputFile = $('.input-file');
 
 // cài đặt node,ll và các chức năng
 class ImageViewer {
-    constructor(name, place, time) {
+    constructor(name, place, time, linkImg) {
       this.name = name;
       this.place = place;
       this.time = time;
+      this.linkImg = linkImg;
       this.view = 0;
     }
   }
@@ -146,22 +147,7 @@ class LinkedList {
         console.log(prevNode.next);
       }
     }
-    //hiển thị node có data mà mình nhập (ERR)
-    printIndexOf(data){
-      let currNode = this.head;
-      let prevNode = null;
-
-      //lặp qua ll cho đến khi tìm được node chỉ định
-      while(currNode != null){
-        // so sánh với phần tử hiện tại
-        //nếu mà tìm được phần tử cần hiển thị
-        //trả về true
-        if(currNode.data === data){
-          console.log(currNode.next);
-          return currNode.data;
-        }
-      }
-    }
+    // tìm các element có địa điểm là
     findElement(value){
       let currNode = this.head;
       let placeArr = [];
@@ -175,6 +161,8 @@ class LinkedList {
       }
       console.log(placeArr);
     }
+
+    //chuyển đổi linkedlist sang mảng
     traverse(){
       var currNode = this.head;
       var arr = [];
@@ -188,9 +176,6 @@ class LinkedList {
 
 
 let llImg = new LinkedList(new LinkNode(new ImageViewer()));
-let val1 = new ImageViewer('hai','c2','2022');
-llImg.insert(val1);
-
 //doi tuong validator
 function Validator(options) {
 
@@ -253,6 +238,7 @@ function Validator(options) {
                     
                     return values;
                   },{});
+                  
                   options.onSubmit(formValues);
                 }
               }
@@ -316,37 +302,147 @@ Validator.isRequired = (selector)=> {
 
 let add = (() => {
   let writeSt = $('.wrt-st-in-here');
-  let submit = $('.add-btn');
+  let onClickMostView = $('.most-viewed');
   let submiOnMobTab = $('.add-btn-on-mob-tab');
   let modalClose = $('.modal-close');
-  let formSubmit = $('.form-submit'); 
-  let formElement = $('#form-1')   
+  let formElement = $('#form-1');
+  let viewList = $$('.viewed-list');
+  let view0 = $$('.viewed-item-view0')
     return {
-
 
         render(){
           let imageHtml = arrLinkedlist.map((arrImg,index) => `
-          <li>
-          <p class = "img-name">${arrImg.name}</p>
-          <span class="img-count" data-index="${index}">${arrImg.view}</span>
-          </li>            
+          <div class="post">
+            <div class="post-header">
+              <div class ="st-in-post-header">
+                <img src="./assets/img/anh-dai-dien-dep.jpg" alt="" class="avatar">
+                <div class="post-in4">
+                  <div class="person-name">${arrImg.name}</div>
+                  <div class="post-place ">
+                    <i class="fa-solid fa-location-dot place-icon"></i>
+                    ${arrImg.place}
+                    <span class="post-time">
+                      <i class="fa-solid fa-calendar-days time-icon"></i>
+                      ${arrImg.time}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <span class="delete-icon"  data-index="${index}">&times</span>  
+            </div>
+            <div class="post-body">
+              <div class="contain-img">
+                <img src="${arrImg.linkImg}" alt="" class="post-img" data-index = "${index}">
+              </div>
+              <div class="funtion-bar">
+                <i class="bar-view ti-eye">
+                  <span class="view-text">${arrImg.view}</span>
+                </i>
+                <i class="bar-heart ti-heart" onclick="clickHeart()"></i>
+                <i class="bar-share fa-solid fa-share"></i>
+              </div>
+            </div> 
+          </div>           
           `)
-          .join('')
+          .join('');
           
-
           writeSt.innerHTML = imageHtml;
         },
+
+        handleWithImg(e) {
+          let deleteBtn = e.target.closest('.delete-icon');
+          let viewBtn = e.target.closest('.post-img');
+          if (deleteBtn) {
+            let index = deleteBtn.dataset.index;
+            arrLinkedlist.splice(index);
+            llImg.deleteFrom(index);
+            this.render();
+          };
+          if(viewBtn){;
+            let index = viewBtn.dataset.index;
+            arrLinkedlist[index].view++;
+            this.render();
+          }
+
+          this.getMaxView(arrLinkedlist);
+
+            
+        },
+
+        //lấy ra ảnh có số lượt xem lớn nhất
+        //nếu chưa có ảnh nào được xem thì trả về ảnh không có gì
+        getMaxView(arr){
+           //Giả định view lớn nhất là 0
+          let max = 0;
+          let maxView = [];
+          let checkMaxView = true 
+          /*So sánh từng số trong obj với giá trị 0 để tìm ra giá trị lớn nhất*/
+          arr.forEach(element => {
+            if (element.view > max) { //Thay đổi giá trị lớn nhất nếu tìm ra số lớn hơn
+              max = element.view
+              maxView = element;
+              checkMaxView = true;
+            }else{
+              checkMaxView = false;
+            }
+          });
+
+          if(checkMaxView){
+            view0.forEach(element=>{
+              element.classList.remove('active');
+            })
+            let maxViewHtml = maxView.map((arrMaxView) => `
+              <div class="post">
+                <div class="post-header">
+                  <div class ="st-in-post-header">
+                    <img src="./assets/img/anh-dai-dien-dep.jpg" alt="" class="avatar">
+                    <div class="post-in4">
+                      <div class="person-name">${arrMaxView.name}</div>
+                      <div class="post-place ">
+                        <i class="fa-solid fa-location-dot place-icon"></i>
+                        ${arrMaxView.place}
+                        <span class="post-time">
+                          <i class="fa-solid fa-calendar-days time-icon"></i>
+                          ${arrMaxView.time}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="post-body">
+                  <div class="contain-img">
+                    <img src="${arrMaxView.linkImg}" alt="" class="post-img">
+                  </div>
+                  <div class="funtion-bar">
+                    <i class="bar-view ti-eye">
+                      <span class="view-text">${arrMaxView.view}</span>
+                    </i>
+                    <i class="bar-heart ti-heart" onclick="clickHeart()"></i>
+                    <i class="bar-share fa-solid fa-share"></i>
+                  </div>
+                </div> 
+              </div>           
+              `)
+              .join(''); 
+                viewList.forEach(viewListItem =>{
+                  
+                  viewListItem.innerHTML  = maxViewHtml;
+                })
+                
+          }
+        },
+
         init () {
             modalClose.onclick = () => {
               modal.classList.remove('active');
             }
 
             // xử lí khi bấm nút submit
-            if(formElement){
               formElement.querySelector('.form-submit').onclick = ()=> {
                 let enableInputs = formElement.querySelectorAll('[name]');
                 let formValues = Array.from(enableInputs).reduce((values, input)=>{
                   switch(input.type){
+                    
                     case 'file':
                       values[input.name] = input.files;
                       break;
@@ -356,25 +452,40 @@ let add = (() => {
                     
                     return values;
                 },{});
-                let val = new ImageViewer(formValues.fullname,formValues.place,formValues.time);
+                let val = new ImageViewer(formValues.fullname,formValues.place,formValues.time,formValues.formImg);
                 llImg.insert(val);
                 arrLinkedlist = llImg.traverse();
+                // arrLinkedlist.forEach((arr1) =>{
+
+                //   arr1.time.slice(7,11);
+                //   console.log(arr1);
+                // })
                 modal.classList.remove('active');
-                writeSt.onclick =  (e)=>{
-                  let viewBtn = e.target.closest('.img-count');
-                    if(viewBtn){
-                      let index = viewBtn.dataset.index;
-                      console.log(arrLinkedlist[index].view++);
-                    }
-                    this.render();
-                } 
-                this.render(); 
-              }
-              
-            }
+                this.getMaxView(arrLinkedlist);
+                  
+                  writeSt.onclick =  this.handleWithImg.bind(this);
+                  this.render(); 
+                }
+                // writeSt.onclick =()=>{
+
+                //   this.getMaxView(arrLinkedlist);
+                // }
+            
+            this.render(); 
         }
     }
   })();
 
 add.init();
 
+let funtionLinkedList = (() => {
+  return{
+    showFnLl(){
+      add.init();
+      console.log(llImg); 
+    }
+
+  }
+})();
+
+funtionLinkedList.showFnLl();

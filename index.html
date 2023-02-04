@@ -17,8 +17,8 @@
   <div class="head">
     <div class="grid wide">
       <div class="navbar">
-        <div class="tool-bars hide-on-pc" onclick="clickTool()">
-          <div class="tool-bars-icon on-mob-tab">
+        <div class="tool-bars hide-on-pc" >
+          <div class="tool-bars-icon on-mob-tab" onclick="clickTool()">
             <i class="fa-solid fa-bars fade bars-icon on-mob-tab"></i>
             <i class="fa-solid fa-angles-down fade down-icon"></i>
           </div>
@@ -26,28 +26,42 @@
             <div class="navbar-add" onclick="submitOnClick()">
               <button class="add-btn">Add</button>
             </div>
-            <div class="most-viewed">
+            <div class="most-viewed" onclick="onClickMostView()">
               Most viewed
               <ul class="viewed-list">
-                <li class="viewed-item">
-                  <span class="viewed-item-in4">Name: moe`</span>
-                  <span class="viewed-item-in4">Place: dell biet</span>
-                  <span class="viewed-item-in4">Time: 12:00pm,1/1/2023</span>
-                  <img src="./assets/img/moe` ami ok.jpg" class="viewed-img" alt="">
+                <li class="viewed-item-view0 active">
+                  <img class="img-0view" src="./assets/img/moe` ami ok.jpg" alt="">
                 </li>
-  
+                <div class="viewed-item active">
+                  <div class="post">
+                    <div class="post-header">
+                      <img src="./assets/img/anh-dai-dien-dep.jpg" alt="" class="avatar">
+                      <div class="post-in4">
+                        <div class="person-name">hai</div>
+                        <div class="post-place ">
+                          <i class="fa-solid fa-location-dot place-icon"></i>
+                          C1 Bach Khoa Ha Noi
+                          <span class="post-time">
+                            <i class="fa-solid fa-calendar-days time-icon"></i>
+                            2023
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="post-body">
+                      <div class="contain-img">
+                        <img src="./assets/img/wibu-img.jpg" alt="" class="post-img">
+                      </div>
+                      <div class="funtion-bar">
+                        <i class="view-bar ti-eye"></i>
+                      </div>
+                    </div> 
+                  </div>
+                </div>
               </ul>
             </div>
             <div class="most-shared">
-              Most shared
-              <ul class="shared-list">
-                <li class="shared-item">
-                  <span class="shared-item-in4">Name: moe`</span>
-                  <span class="shared-item-in4">Place: dell biet</span>
-                  <span class="shared-item-in4">Time: 12:00pm,1/1/2023</span>
-                  <img src="./assets/img/moe` ami ok.jpg" class="share-img" alt="">
-                </li>
-              </ul>
+              Funtion LinkedList
             </div>
             <div class="instant-of-year">
               Instant of year
@@ -73,25 +87,15 @@
           <div class="most-viewed  hide-on-mob-tab">
             Most viewed
             <ul class="viewed-list">
-              <li class="viewed-item">
-                <span class="viewed-item-in4">Name: moe`</span>
-                <span class="viewed-item-in4">Place: dell biet</span>
-                <span class="viewed-item-in4">Time: 12:00pm,1/1/2023</span>
-                <img src="./assets/img/moe` ami ok.jpg" class="viewed-img" alt="">
+              <li class="viewed-item-view0 active">
+                <img class="img-0view" src="./assets/img/moe` ami ok.jpg" alt="">
+            
               </li>
 
             </ul>
           </div>
           <div class="most-shared hide-on-mob-tab">
-            Most shared
-            <ul class="shared-list">
-              <li class="shared-item">
-                <span class="shared-item-in4">Name: moe`</span>
-                <span class="shared-item-in4">Place: dell biet</span>
-                <span class="shared-item-in4">Time: 12:00pm,1/1/2023</span>
-                <img src="./assets/img/moe` ami ok.jpg" class="share-img" alt="">
-              </li>
-            </ul>
+            Funtion LinkedList
           </div>
           <div class="instant-of-year hide-on-mob-tab">
             Instant of year
@@ -109,34 +113,46 @@
     </div>
   </div>
   <div class="content ">
+    <div class="content-start grid wide">
+      <img src="./assets/img/main-img.jpg" alt="" class="img-start fadeIn">
+      <img src="./assets/img/main-img2.jpg" alt="" class="img-start fadeIn">
+    </div>
     <div class="grid wide">
     <ul class="wrt-st-in-here"></ul>    
     <div class="post">
       <div class="post-header">
-        <img src="./assets/img/anh-dai-dien-dep.jpg" alt="" class="avatar">
-        <div class="post-in4">
-          <div class="person-name">hai</div>
-          <div class="post-place ">
-            <i class="fa-solid fa-location-dot place-icon"></i>
-            C1 Bach Khoa Ha Noi
-            <span class="post-time">
-              <i class="fa-solid fa-calendar-days time-icon"></i>
-              2023
-            </span>
+        <div class="st-in-post-header">
+          <img src="./assets/img/anh-dai-dien-dep.jpg" alt="" class="avatar">
+          <div class="post-in4">
+            <div class="person-name">hai</div>
+            <div class="post-place ">
+              <i class="fa-solid fa-location-dot place-icon"></i>
+              C1 Bach Khoa Ha Noi
+              <span class="post-time">
+                <i class="fa-solid fa-calendar-days time-icon"></i>
+                2023
+              </span>
+            </div>
           </div>
         </div>
+        <span class="dlete-icon"  data-index="${index}">&times</span>
       </div>
       <div class="post-body">
         <div class="contain-img">
-          <img src="./assets/img/moe` ami ok.jpg" alt="" class="post-img fade">
-          <img src="./assets/img/wibu-img.jpg" alt="" class="post-img fade active">
+          <img src="./assets/img/wibu-img.jpg" alt="" class="post-img">
         </div>
         <div class="funtion-bar">
-          <i class="bar-view ti-eye"></i>
+          <i class="bar-view ti-eye"> 
+            <span class="view-text">123</span>
+          </i>
           <i class="bar-heart ti-heart" onclick="clickHeart()"></i>
           <i class="bar-share fa-solid fa-share"></i>
         </div>
       </div> 
+      <div class="fn-linked-list">
+        <input type="text" class="input-find">
+        <button class="input-find-btn"></button>
+      </div>
     </div>
 
     <div class="modal">
@@ -172,15 +188,15 @@
 
                 <div class="form-group">
                   <label for="time" class="form-label">Thời gian</label>
-                  <input id="time" name="time" rules="required" type="text" placeholder="2022" class="form-control input-time">
+                  <input id="time" name="time" rules="required" type="date" value="2023-01-01" placeholder="2022" class="form-control input-time">
                   <span class="form-message"></span>
                 </div>
 
-                <!-- <div class="form-group">
-                  <label for="form-img" class="form-label">Ảnh</label>
-                  <input id="form-img" name="form-img" rules="required" type="file" class="form-control input-file">
+                <div class="form-group">
+                  <label for="formImg" class="form-label">Ảnh</label>
+                  <input id="formImg" name="formImg" rules="required" type="text" placeholder="copy link address" class="form-control input-img">
                   <span class="form-message"></span>
-                </div> -->
+                </div>
             
                 <button class="form-submit">Ok r đó</button>
               </form>
@@ -202,10 +218,10 @@
             // Validator.isEmail('#email'),
             Validator.isRequired('#place'),
             Validator.isRequired('#time'),
-            // Validator.isRequired('#form-img'),
+            Validator.isRequired('#formImg'),
           ],
           onSubmit : (data)=> {
-            return data
+            return data; 
           }
         });
         
