@@ -121,14 +121,15 @@ let FnLlOnClick = () => {
 // print();
 
 
-// let onClickViewList = document.querySelector('.viewed-list');
+let onClickViewList = document.querySelector('.viewed-list');
 // let onClickClose = document.querySelector('.viewed-close');
-// let onClickMostView = () => {
-//         onClickViewList.classList.add('active');
-//     }
-//     onClickClose.onclick = () => {
-//         onClickViewList.classList.remove('active');
-//     }
+let onClickMostView = () => {
+        onClickViewList.classList.add('active');
+    }
+ let onClickClose = () => {
+      onClickViewList.classList.remove('active');
+      // console.log(1);
+    }
 
 let arr = [
   {

@@ -379,8 +379,7 @@ let add = (() => {
           /*So sánh từng số trong obj với giá trị 0 để tìm ra giá trị lớn nhất*/
           arr.forEach(element => {
             if (element.view > max) { //Thay đổi giá trị lớn nhất nếu tìm ra số lớn hơn
-              max = element.view
-              maxView = element;
+              max = element.view;
               checkMaxView = true;
             }else{
               checkMaxView = false;
