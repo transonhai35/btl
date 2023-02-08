@@ -30,7 +30,7 @@ class LinkedList {
     this.head = null;
     this.size = 0;
     }
-    //thêm 1 node vào cuối danh sách
+    //thêm 1 node vào đầu
     insert(data){
       var node = new LinkNode(data); //khởi tạo một node
       var currNode; // lưu  trữ node hiện tại 
@@ -40,14 +40,8 @@ class LinkedList {
       if (this.head == null)
         this.head = node;
       else {
-        currNode = this.head;
-
-          // lặp qua các node cho đến node cuối cùng
-          while (currNode.next) {
-            currNode = currNode.next;
-          }
-          //thêm node
-        currNode.next = node;
+        node.next = this.head;
+        this.head = node;
       }
         this.size++;
       }

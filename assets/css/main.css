@@ -90,7 +90,6 @@ body {
   animation: fadeIn ease-in 0.2s;
   cursor: default;
   z-index: 1;
-  overflow: auto;
   max-height: 500px;
   align-items: center;
 }

@@ -124,10 +124,12 @@ let FnLlOnClick = () => {
 let onClickViewList = document.querySelector('.viewed-list');
 // let onClickClose = document.querySelector('.viewed-close');
 let onClickMostView = () => {
+  console.log("mostview")
         onClickViewList.classList.add('active');
     }
  let onClickClose = () => {
       onClickViewList.classList.remove('active');
+      console.log(onClickViewList);
       // console.log(1);
     }
 
@@ -142,3 +144,4 @@ let arr = [
   }
   
 ]
+
