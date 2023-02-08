@@ -35,6 +35,7 @@ let submitOnClick = () => {
   inputFullName.value = '';
   inputPlace.value = '';
   inputTime.value = '';
+  inputImg.value = '';
 }
 
 let FnLlOnClick = () => {
@@ -144,4 +145,6 @@ let arr = [
   }
   
 ]
+
+
 

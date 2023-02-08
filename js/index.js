@@ -7,6 +7,7 @@ let inputFullName = $('.input-full-name');
 let inputPlace = $('.input-place');
 let inputTime = $('.input-time');
 let inputFile = $('.input-file');
+let inputImg = $('.input-img');
 
 // cài đặt node,ll và các chức năng
 class ImageViewer {
