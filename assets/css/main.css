@@ -68,6 +68,7 @@ body {
   position: relative;
   cursor: pointer;
   padding: 10px;
+  z-index: 99 !important;
 }
 
 .post-box-right {
@@ -92,6 +93,7 @@ body {
   z-index: 1;
   max-height: 500px;
   align-items: center;
+  z-index: 99 !important;
 }
 
 
@@ -319,6 +321,7 @@ body {
   bottom: 0;
   right: 0;
   display: none;
+  z-index: 99 !important;
 }
 
 .modal-overlay{
@@ -481,7 +484,7 @@ p {
 #bar-chart::before, #line-chart::before {
   content: "";
   position: absolute;
-  display: block;
+  display: flex;
   width: 240px;
   height: 30px;
   left: 155px;

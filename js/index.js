@@ -388,7 +388,7 @@ function drawCharts() {
     },
     vAxis: {
       minValue: 0,
-      maxValue: 100,
+      maxValue: 20,
       baselineColor: '#DDD',
       gridlines: {
         color: '#DDD',
