@@ -2,6 +2,7 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 let arrLinkedlist = [];
+let arrCharts = [];
 let modal = $('.modal');
 let inputFullName = $('.input-full-name');
 let inputPlace = $('.input-place');
@@ -294,6 +295,129 @@ Validator.isRequired = (selector)=> {
 
 //thêm một element
 
+google.load("visualization", "1", {packages:["corechart"]});
+
+function drawCharts() {
+  let jan = 10;
+  let feb = 10;
+  let mar = 10;
+  let apr = 10;
+  let may = 10;
+  let jun = 10;
+  let jul = 10;
+  let aug = 10;
+  let sep = 10;
+  let oct = 10;
+  let nov = 10;
+  let dec = 10;
+  arrCharts.forEach(element=>{
+    switch(element){
+      case'2023-01': 
+        jan ++;
+        break;              
+      case'2023-02': 
+        feb ++;
+        break;
+      case'2023-03': 
+        mar ++;
+        break;
+      case'2023-04': 
+        apr ++;
+        break;
+      case'2023-05': 
+        may ++;
+        break;
+      case'2023-06': 
+        jun ++;
+        break;
+      case'2023-07': 
+        jul ++;
+        break;
+      case'2023-08': 
+        aug ++;
+        break;
+      case'2023-09': 
+        sep ++;
+        break;
+      case'2023-10': 
+        oct ++;
+        break;
+      case'2023-11': 
+        nov ++;
+        break;
+      case'2023-12': 
+        dec ++;
+        break;
+    }
+  })
+  // BAR CHART
+  var barData = google.visualization.arrayToDataTable([
+    ['month', 'Page Views'],
+    ['Jan',  jan],
+    ['Feb',  feb],
+    ['Mar',  mar],
+    ['Apr',  apr],
+    ['May',  may],
+    ['Jun',  jun],
+    ['Jul',  jul],
+    ['Aug',  aug],
+    ['Sep',  sep],
+    ['Oct',  oct],
+    ['Nov',  nov],
+    ['Dec',  dec],
+  ]);
+  // set bar chart options
+  var barOptions = {
+    focusTarget: 'category',
+    backgroundColor: 'transparent',
+    colors: ['cornflowerblue', 'tomato'],
+    fontName: 'Open Sans',
+    chartArea: {
+      left: 50,
+      top: 10,
+      width: '100%',
+      height: '70%'
+    },
+    bar: {
+      groupWidth: '80%'
+    },
+    hAxis: {
+      textStyle: {
+        fontSize: 11
+      }
+    },
+    vAxis: {
+      minValue: 0,
+      maxValue: 100,
+      baselineColor: '#DDD',
+      gridlines: {
+        color: '#DDD',
+        count: 4
+      },
+      textStyle: {
+        fontSize: 11
+      }
+    },
+    legend: {
+      position: 'bottom',
+      textStyle: {
+        fontSize: 12
+      }
+    },
+    animation: {
+      duration: 1200,
+      easing: 'out',
+      startup: true
+    }
+  };
+  // draw bar chart twice so it animates
+  var barChart = new google.visualization.ColumnChart(document.getElementById('bar-chart'));
+  //barChart.draw(barZeroData, barOptions);
+  barChart.draw(barData, barOptions);
+  
+}
+
+
 
 let add = (() => {
   let writeSt = $('.wrt-st-in-here');
@@ -369,12 +493,13 @@ let add = (() => {
         getMaxView(arr){
            //Giả định view lớn nhất là 0
           let max = 0;
-          let maxView = [];
           let checkMaxView = true 
+          let maxView = [];
           /*So sánh từng số trong obj với giá trị 0 để tìm ra giá trị lớn nhất*/
           arr.forEach(element => {
             if (element.view > max) { //Thay đổi giá trị lớn nhất nếu tìm ra số lớn hơn
               max = element.view;
+              maxView.push(element);
               checkMaxView = true;
             }else{
               checkMaxView = false;
@@ -449,6 +574,8 @@ let add = (() => {
                 let val = new ImageViewer(formValues.fullname,formValues.place,formValues.time,formValues.formImg);
                 llImg.insert(val);
                 arrLinkedlist = llImg.traverse();
+                  arrCharts.push(formValues.time.slice(0,7));
+                google.setOnLoadCallback(drawCharts);
                 // arrLinkedlist.forEach((arr1) =>{
 
                 //   arr1.time.slice(7,11);
@@ -483,3 +610,4 @@ let funtionLinkedList = (() => {
 })();
 
 funtionLinkedList.showFnLl();
+

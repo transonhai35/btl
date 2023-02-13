@@ -133,18 +133,3 @@ let onClickMostView = () => {
       console.log(onClickViewList);
       // console.log(1);
     }
-
-let arr = [
-  {
-    name : 123,
-    view : 100
-  },
-  {
-    name: 345,
-    view: 99
-  }
-  
-]
-
-
-

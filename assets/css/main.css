@@ -164,6 +164,7 @@ body {
   display: flex;
   flex-direction: column;
   font-weight: 500;
+  z-index: 10;
 }
 
 .year-item-in4{
@@ -442,8 +443,49 @@ body {
   background-color: #1ac7b6;
 }
 
-.spacer {
+.space {
   margin-top: 36px;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
+body {
+  font-family: "Open Sans", Arial;
+  background: #EDEDED;
+}
+.charts {
+  width: 600px;
+  margin-bottom: 10px;
+  padding: 10px 20px 30px;
+  background: #FFF;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  margin-top: 2rem;
+  font-size: 13px;
+}
+#bar-chart {
+  width: 500px;
+  height: 300px;
+  position: relative;
+}
+#line-chart {
+  width: 500px;
+  height: 300px;
+  position: relative;
+}
+#bar-chart::before, #line-chart::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 240px;
+  height: 30px;
+  left: 155px;
+  top: 254px;
+  background: #FAFAFA;
+  box-shadow: 1px 1px 0 0 #DDD;
+}
