@@ -2,6 +2,7 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 let arrLinkedlist = [];
+let arrGetMaxView = [];
 let arrCharts = [];
 let modal = $('.modal');
 let inputFullName = $('.input-full-name');
@@ -10,7 +11,7 @@ let inputTime = $('.input-time');
 let inputFile = $('.input-file');
 let inputImg = $('.input-img');
 
-// cài đặt node,ll và các chức năng
+// cài đặt Image Viewer và các chức năng
 class ImageViewer {
     constructor(name, place, time, linkImg) {
       this.name = name;
@@ -20,12 +21,14 @@ class ImageViewer {
       this.view = 0;
     }
   }
+  // cài đặt linkedlist
+  // cấu trúc của 1 node
 class LinkNode {
   constructor(data){
     this.data = data;
-    this.next = null
+    this.next = null;
   }
-
+//một linkedlist
   }
 class LinkedList {
   constructor() {
@@ -35,7 +38,6 @@ class LinkedList {
     //thêm 1 node vào đầu
     insert(data){
       var node = new LinkNode(data); //khởi tạo một node
-      var currNode; // lưu  trữ node hiện tại 
       
       //nếu node hiện tại mà trống
       //thêm luôn vào đầu 
@@ -143,6 +145,7 @@ class LinkedList {
         console.log(prevNode.next);
       }
     }
+
     // tìm các element có địa điểm là
     findElement(value){
       let currNode = this.head;
@@ -158,6 +161,25 @@ class LinkedList {
       console.log(placeArr);
     }
 
+    // lấy ra phần tử có số lượt xem nhiều nhất
+    //nếu view = 0 thì return 0
+    getMaxview(){
+      let currNode = this.head;
+      let viewArr = [];
+      let maxView = [];
+      for(let i = 0; i< this.size; i++){
+            viewArr.push(currNode.view);
+            currNode = currNode.next;
+      }
+      viewArr.sort(function(a, b) {
+        return b - a;
+      });
+      viewArr.forEach(element=>{
+        maxView.push(element[0])
+      })
+      return maxView;
+    }
+
     //chuyển đổi linkedlist sang mảng
     traverse(){
       var currNode = this.head;
@@ -170,8 +192,10 @@ class LinkedList {
     }
   }
 
-
 let llImg = new LinkedList(new LinkNode(new ImageViewer()));
+;
+
+
 //doi tuong validator
 function Validator(options) {
 
@@ -483,74 +507,10 @@ let add = (() => {
             this.render();
           }
 
-          this.getMaxView(arrLinkedlist);
-
             
         },
 
-        //lấy ra ảnh có số lượt xem lớn nhất
-        //nếu chưa có ảnh nào được xem thì trả về ảnh không có gì
-        getMaxView(arr){
-           //Giả định view lớn nhất là 0
-          let max = 0;
-          let checkMaxView = true 
-          let maxView = [];
-          /*So sánh từng số trong obj với giá trị 0 để tìm ra giá trị lớn nhất*/
-          arr.forEach(element => {
-            if (element.view > max) { //Thay đổi giá trị lớn nhất nếu tìm ra số lớn hơn
-              max = element.view;
-              maxView.push(element);
-              checkMaxView = true;
-            }else{
-              checkMaxView = false;
-            }
-          });
-
-          if(checkMaxView){
-            view0.forEach(element=>{
-              element.classList.remove('active');
-            })
-            let maxViewHtml = maxView.map((arrMaxView) => `
-              <div class="post">
-                <div class="post-header">
-                  <div class ="st-in-post-header">
-                    <img src="./assets/img/anh-dai-dien-dep.jpg" alt="" class="avatar">
-                    <div class="post-in4">
-                      <div class="person-name">${arrMaxView.name}</div>
-                      <div class="post-place ">
-                        <i class="fa-solid fa-location-dot place-icon"></i>
-                        ${arrMaxView.place}
-                        <span class="post-time">
-                          <i class="fa-solid fa-calendar-days time-icon"></i>
-                          ${arrMaxView.time}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-body">
-                  <div class="contain-img">
-                    <img src="${arrMaxView.linkImg}" alt="" class="post-img">
-                  </div>
-                  <div class="funtion-bar">
-                    <i class="bar-view ti-eye">
-                      <span class="view-text">${arrMaxView.view}</span>
-                    </i>
-                    <i class="bar-heart ti-heart" onclick="clickHeart()"></i>
-                    <i class="bar-share fa-solid fa-share"></i>
-                  </div>
-                </div> 
-              </div>           
-              `)
-              .join(''); 
-                viewList.forEach(viewListItem =>{
-                  
-                  viewListItem.innerHTML  = maxViewHtml;
-                })
-                
-          }
-        },
-
+        
         init () {
             modalClose.onclick = () => {
               modal.classList.remove('active');
@@ -574,24 +534,15 @@ let add = (() => {
                 let val = new ImageViewer(formValues.fullname,formValues.place,formValues.time,formValues.formImg);
                 llImg.insert(val);
                 arrLinkedlist = llImg.traverse();
-                  arrCharts.push(formValues.time.slice(0,7));
+                arrCharts.push(formValues.time.slice(0,7));
                 google.setOnLoadCallback(drawCharts);
-                // arrLinkedlist.forEach((arr1) =>{
-
-                //   arr1.time.slice(7,11);
-                //   console.log(arr1);
-                // })
+                // arrGetMaxView = llImg.getMaxview();
                 modal.classList.remove('active');
-                this.getMaxView(arrLinkedlist);
                   
                   writeSt.onclick =  this.handleWithImg.bind(this);
                   this.render(); 
                 }
-                // writeSt.onclick =()=>{
-
-                //   this.getMaxView(arrLinkedlist);
-                // }
-            
+            // console.log(arrGetMaxView);
             this.render(); 
         }
     }

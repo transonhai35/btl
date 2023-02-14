@@ -198,6 +198,8 @@ body {
 
 .post {
   overflow: auto;
+  background-color: white;
+  padding: 10px 20px;
 }
 
 .post-header{
