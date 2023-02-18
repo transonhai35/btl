@@ -94,6 +94,8 @@ body {
   max-height: 500px;
   align-items: center;
   z-index: 99 !important;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -104,14 +106,10 @@ body {
   overflow: auto;
 }
 
-.viewed-item-view0{
-  display: none;
+.viewed-item .view0{
+  display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.img-0view {
-  
 }
 
 .viewed-item-in4{
@@ -179,10 +177,13 @@ body {
   font-size: 1.2rem;
   margin-top: var(--header-height);
   padding-top: 1px;
+  display: flex;
+  flex-direction: column;
 }
 
 .content-start {
-  height: 500px;
+  max-width: 1200px;
+  height: 800px;
 }
 
 .img-start {
@@ -200,6 +201,7 @@ body {
   overflow: auto;
   background-color: white;
   padding: 10px 20px;
+  margin-top: 10px;
 }
 
 .post-header{

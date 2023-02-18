@@ -13,7 +13,7 @@ let inputImg = $('.input-img');
 
 // cài đặt Image Viewer và các chức năng
 class ImageViewer {
-    constructor(name, place, time, linkImg) {
+    constructor(name, place, time, linkImg)  {
       this.name = name;
       this.place = place;
       this.time = time;
@@ -79,32 +79,34 @@ class LinkedList {
     }
 
     //xóa một node với index chỉ định
-    deleteFrom(index){
-      let currNode, prevNode, i = 0;
-      currNode = this.head;
-      prevNode = currNode;
+    removeFrom(index) {    
+        var currNode, prevNode, i = 0;
+        currNode = this.head;
+        prevNode = currNode;
 
-      //xóa cái node đầu tiên
-      if(index == 0) {
-        this.head = currNode;
-      }else{
+        // xóa node đầu tiên
+        if (index === 0) {
+            this.head = currNode.next;
+        } 
+        //nếu không phải node đầu tiên
+        else {
+            // lặp qua ll cho đến khi tới node cần xóa
+            while (i < index) {
+                i++;
+                prevNode = currNode;
+                currNode = currNode.next;
+            }
+            // remove the element
+            prevNode.next = currNode.next;
+          }
+          this.size--;
+          // return nốt xóa
+          return currNode.data;
+  }
 
-        // lặp qua ll cho đến khi tìm được node chỉ định
-        while(i<index){
-          i++
-          prevNode = currNode;
-          currNode = currNode.next;
-        }
 
-        //xóa node tại index được chỉ định
-        prevNode.next = currNode.next;
-      }
-      this.size--;
-    }
-
-
-    //xóa node với data chỉ định (ERR)
-    deleteData(data) {
+    //xóa node với data chỉ định 
+    removeData(data) {
       let currNode = this.head;
       let prevNode = null;
 
@@ -122,9 +124,10 @@ class LinkedList {
           this.size--;
           return currNode.data; 
         }
+        prevNode = currNode;
+        currNode = currNode.next;
       }
-      prevNode = currNode;
-      currNode = currNode.next;
+      return -1;
     }
 
     //hiển thị node có index mà mình nhập
@@ -142,15 +145,15 @@ class LinkedList {
           prevNode = currNode;
           currNode = currNode.next;
         }
-        console.log(prevNode.next);
+        console.log(currNode);
       }
     }
 
     // tìm các element có địa điểm là
-    findElement(value){
+    findElementPlace(value){
       let currNode = this.head;
       let placeArr = [];
-      for(let i = 0; i< this.size; i++){
+      while(currNode){
           if(value == currNode.data.place){
             placeArr.push(currNode.data);
             currNode = currNode.next;
@@ -158,32 +161,39 @@ class LinkedList {
             currNode = currNode.next;
           }
       }
-      console.log(placeArr);
+      return console.log(placeArr);
     }
 
-    // lấy ra phần tử có số lượt xem nhiều nhất
-    //nếu view = 0 thì return 0
-    getMaxview(){
+    // get data.view của các node vào một mảng
+    getViewArr(){
+      var currNode = this.head;
+      var arr = [];
+      while (currNode) {
+        arr.push(currNode.data.view);
+        currNode = currNode.next;
+      }
+      return arr;
+    }
+
+    //tìm kiếm phần tử có view là 
+    findElementView(value){
       let currNode = this.head;
       let viewArr = [];
-      let maxView = [];
       for(let i = 0; i< this.size; i++){
-            viewArr.push(currNode.view);
+          if(value == currNode.data.view){
+            viewArr.push(currNode.data);
             currNode = currNode.next;
+          }else{
+            currNode = currNode.next;
+          }
       }
-      viewArr.sort(function(a, b) {
-        return b - a;
-      });
-      viewArr.forEach(element=>{
-        maxView.push(element[0])
-      })
-      return maxView;
+      return viewArr;
     }
 
     //chuyển đổi linkedlist sang mảng
     traverse(){
-      var currNode = this.head;
-      var arr = [];
+      let currNode = this.head;
+      let arr = [];
       while (currNode) {
         arr.push(currNode.data);
         currNode = currNode.next;
@@ -193,7 +203,14 @@ class LinkedList {
   }
 
 let llImg = new LinkedList(new LinkNode(new ImageViewer()));
-;
+// let val0 = new ImageViewer('hai0','c9','11/2','qưer');
+// let val1 = new ImageViewer('hai1','c9','11/2','qưer');
+// let val2 = new ImageViewer('hai2','c98','11/2','qưer');
+// llImg.insert(val2);
+// llImg.insert(val1);
+// llImg.insert(val0);
+// llImg.removeFrom(0);
+// console.log(llImg);
 
 
 //doi tuong validator
@@ -441,16 +458,31 @@ function drawCharts() {
   
 }
 
+//thuật toán sắp xếp
+insertionSort = (inputArr)=> {
+  let n = inputArr.length;
+      for (let i = 1; i < n; i++) {
+          // Choosing the first element in our unsorted subarray
+          let current = inputArr[i];
+          // The last element of our sorted subarray
+          let j = i-1; 
+          while ((j > -1) && (current < inputArr[j])) {
+              inputArr[j+1] = inputArr[j];
+              j--;
+          }
+          inputArr[j+1] = current;
+      }
+  return inputArr[inputArr.length-1];
+}
+
 
 
 let add = (() => {
   let writeSt = $('.wrt-st-in-here');
-  let onClickMostView = $('.most-viewed');
-  let submiOnMobTab = $('.add-btn-on-mob-tab');
   let modalClose = $('.modal-close');
   let formElement = $('#form-1');
+  let onClickMostView = $('.most-viewed');
   let viewList = $$('.viewed-list');
-  let view0 = $$('.viewed-item-view0')
     return {
 
         render(){
@@ -490,6 +522,47 @@ let add = (() => {
           .join('');
           
           writeSt.innerHTML = imageHtml;
+          // insertionSort(llImg.getViewArr()); 
+        },
+
+        renderMaxView(){
+          let postMaxViewArr = llImg.findElementView(insertionSort(llImg.getViewArr()));
+          let postMaxViewHtml = postMaxViewArr.map((arrImg,index) => `
+          <div class="post">
+            <div class="post-header">
+              <div class ="st-in-post-header">
+                <img src="./assets/img/anh-dai-dien-dep.jpg" alt="" class="avatar">
+                <div class="post-in4">
+                  <div class="person-name">${arrImg.name}</div>
+                  <div class="post-place ">
+                    <i class="fa-solid fa-location-dot place-icon"></i>
+                    ${arrImg.place}
+                    <span class="post-time">
+                      <i class="fa-solid fa-calendar-days time-icon"></i>
+                      ${arrImg.time}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-body">
+              <div class="contain-img">
+                <img src="${arrImg.linkImg}" alt="" class="post-img" data-index = "${index}">
+              </div>
+              <div class="funtion-bar">
+                <i class="bar-view ti-eye">
+                  <span class="view-text">${arrImg.view}</span>
+                </i>
+                <i class="bar-heart ti-heart" onclick="clickHeart()"></i>
+                <i class="bar-share fa-solid fa-share"></i>
+              </div>
+            </div> 
+          </div>           
+          `)
+          .join('');
+          viewList.forEach(element=>{
+            element.innerHTML = postMaxViewHtml;
+          })
         },
 
         handleWithImg(e) {
@@ -498,17 +571,16 @@ let add = (() => {
           if (deleteBtn) {
             let index = deleteBtn.dataset.index;
             arrLinkedlist.splice(index);
-            llImg.deleteFrom(index);
+            llImg.removeFrom(index);
             this.render();
           };
           if(viewBtn){;
             let index = viewBtn.dataset.index;
             arrLinkedlist[index].view++;
             this.render();
-          }
-
-            
-        },
+          }    
+           this.renderMaxView();
+          },
 
         
         init () {
@@ -542,7 +614,7 @@ let add = (() => {
                   writeSt.onclick =  this.handleWithImg.bind(this);
                   this.render(); 
                 }
-            // console.log(arrGetMaxView);
+            console.log(llImg);
             this.render(); 
         }
     }
@@ -550,15 +622,5 @@ let add = (() => {
 
 add.init();
 
-let funtionLinkedList = (() => {
-  return{
-    showFnLl(){
-      add.init();
-      console.log(llImg); 
-    }
 
-  }
-})();
-
-funtionLinkedList.showFnLl();
 

@@ -38,49 +38,6 @@ let submitOnClick = () => {
   inputImg.value = '';
 }
 
-let FnLlOnClick = () => {
-  
-}
-
-
-//   arrStImg = [
-//     {
-//     first: 1,
-//     second:6,
-//     third: [123,2345,5678]
-//     },
-//     {
-//       first: 3,
-//       second:4,
-//       third: [353,235,538]
-//     },
-//     {
-//       first: 2,
-//       second:8,
-//       third: [353,235,538]  
-//     },
-//   ]
-
-// // Tạo hàm so sánh
-// let hamSoSanh = (a, b) => a.second - b.second;
-
-// // Sắp xếp mảng
-// let quicksort = arrStImg.sort(hamSoSanh);
-
-// // In ra mảng đã sắp xếp
-// console.log(arrStImg);
-
-
-  // function imgItemConsole(imgItem){
-  //   for(let i =0; i<imgItem.third.length; i++){
-  //     console.log(imgItem.third[i]); 
-  //   }
-  // }
-
-  // arrStImg.map(imgItemConsole);
-
-
-
   //khai báo biến slideIndex đại diện cho slide hiện tại
   
   let slideIndex;
@@ -110,26 +67,12 @@ let FnLlOnClick = () => {
     showSlides(slideIndex = n);
   }
 
+  let onClickViewList = document.querySelector('.container-most-viewed');
+  let onClickMostView = () => {
+          onClickViewList.classList.add('active');
+      }
+   let onClickClose = () => {
+        onClickViewList.classList.remove('active');
+      }
 
 
-// let arrMostViewed = document.querySelectorAll('.most-viewed');
-// let print = () => {
-//   for(let i= 0; i<arrMostViewed.length; i++) {
-//     console.log(arrMostViewed[i]);
-
-//   }
-// };
-// print();
-
-
-let onClickViewList = document.querySelector('.viewed-list');
-// let onClickClose = document.querySelector('.viewed-close');
-let onClickMostView = () => {
-  console.log("mostview")
-        onClickViewList.classList.add('active');
-    }
- let onClickClose = () => {
-      onClickViewList.classList.remove('active');
-      console.log(onClickViewList);
-      // console.log(1);
-    }
