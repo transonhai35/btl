@@ -105,6 +105,8 @@ body {
   flex-direction: column;
   font-weight: 500;
   overflow: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .viewed-item .view0{

@@ -413,7 +413,7 @@ function drawCharts() {
     ['Nov',  nov],
     ['Dec',  dec],
   ]);
-  // set bar chart options
+  // cài đặt chức năng biểu đồ
   var barOptions = {
     focusTarget: 'category',
     backgroundColor: 'transparent',
@@ -457,9 +457,8 @@ function drawCharts() {
       startup: true
     }
   };
-  // draw bar chart twice so it animates
-  var barChart = new google.visualization.ColumnChart(document.getElementById('bar-chart'));
-  //barChart.draw(barZeroData, barOptions);
+  // vẽ biểu đồ
+  let barChart = new google.visualization.ColumnChart(document.getElementById('bar-chart'));
   barChart.draw(barData, barOptions);
   
 }
@@ -468,9 +467,9 @@ function drawCharts() {
 insertionSort = (inputArr)=> {
   let n = inputArr.length;
       for (let i = 1; i < n; i++) {
-          // Choosing the first element in our unsorted subarray
+          // Chọn phần tử đầu tiên của mảng
           let current = inputArr[i];
-          // The last element of our sorted subarray
+          // phần tử cuối cùng của mảng con được sắp xếp
           let j = i-1; 
           while ((j > -1) && (current < inputArr[j])) {
               inputArr[j+1] = inputArr[j];
