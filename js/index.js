@@ -338,8 +338,6 @@ Validator.isRequired = (selector)=> {
 // }
 
 
-//thêm một element
-
 
 // tính phân bố số ảnh chụp theo năm
 google.load("visualization", "1", {packages:["corechart"]});
@@ -357,6 +355,8 @@ function drawCharts() {
   let oct = 10;
   let nov = 10;
   let dec = 10;
+
+  // lặp qua ll để tìm kiếm xem những phần tử nào có cùng tháng thì +1
   arrCharts.forEach(element=>{
     switch(element){
       case'2023-01': 
@@ -481,7 +481,7 @@ insertionSort = (inputArr)=> {
 }
 
 
-
+//thêm một element
 let add = (() => {
   let writeSt = $('.wrt-st-in-here');
   let modalClose = $('.modal-close');
