@@ -312,7 +312,7 @@ function Validator(options) {
 
 // định nghĩa
 //nguyên tắc của các rules:
-// 1. Khi có lỗi: => trả ra messae lỗi
+// 1. Khi có lỗi: => trả ra message lỗi
 // 2. khi không hợp lệ => undefined
 Validator.isRequired = (selector)=> {
   return {
