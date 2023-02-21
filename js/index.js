@@ -62,7 +62,7 @@ class LinkedList {
         node.next = this.head;
         this.head = node;
       }else {
-        currNode = this.head
+        currNode = this.head;
 
         // lặp qua các node trong ll cho đến khi đến vị trí chỉ định
         while (i < index) {
@@ -209,11 +209,15 @@ let llImg = new LinkedList(new LinkNode(new ImageViewer()));
 // llImg.insert(val2);
 // llImg.insert(val1);
 // llImg.insert(val0);
-// llImg.removeFrom(0);
 // console.log(llImg);
+// llImg.removeData(val0);
+
 
 
 //doi tuong validator
+
+
+
 function Validator(options) {
 
   let selectorRules = {};
@@ -336,6 +340,8 @@ Validator.isRequired = (selector)=> {
 
 //thêm một element
 
+
+// tính phân bố số ảnh chụp theo năm
 google.load("visualization", "1", {packages:["corechart"]});
 
 function drawCharts() {
