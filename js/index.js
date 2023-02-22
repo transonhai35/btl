@@ -72,8 +72,8 @@ class LinkedList {
         }
 
           //thêm node vào ll
-          prevNode.next = currNode;
-          currNode.next = next;
+          node.next = currNode;
+          prevNode.next = node;
       }
       this.size++;
     }
@@ -203,13 +203,15 @@ class LinkedList {
   }
 
 let llImg = new LinkedList(new LinkNode(new ImageViewer()));
-// let val0 = new ImageViewer('hai0','c9','11/2','qưer');
-// let val1 = new ImageViewer('hai1','c9','11/2','qưer');
-// let val2 = new ImageViewer('hai2','c98','11/2','qưer');
-// llImg.insert(val2);
-// llImg.insert(val1);
-// llImg.insert(val0);
-// console.log(llImg);
+let val0 = new ImageViewer('hai0','c9','11/2','qưer');
+let val1 = new ImageViewer('hai1','c9','11/2','qưer');
+let val2 = new ImageViewer('hai2','c98','11/2','qưer');
+let val3 = new ImageViewer('hai3','c98','11/2','qưer');
+llImg.insert(val2);
+llImg.insert(val1);
+llImg.insert(val0);
+llImg.insertAt(2,val3);
+console.log(llImg);
 // llImg.removeData(val0);
 
 
