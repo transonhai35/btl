@@ -72,8 +72,8 @@ class LinkedList {
         }
 
           //thêm node vào ll
-          node.next = currNode;
           prevNode.next = node;
+          node.next = currNode;
       }
       this.size++;
     }
